@@ -1,0 +1,16 @@
+<td class="button-col">
+  <app-add-to-cart-button [productId]="product().id" numberOnly />
+</td>
+<td class="optional-col">
+  <img [ngSrc]="product().thumb" alt="" height="50" width="50" />
+</td>
+<td class="title">{{ product().title }}</td>
+<td class="optional-col description">{{ product().description }}</td>
+<td class="optional-col">
+  {{ product().category | uppercase }}
+</td>
+@if(product().salePrice){
+  <td class="sale-price">Sale! {{ product().salePrice | currency }}</td>
+} @else {
+  <td>{{ product().price | currency }}</td>
+}

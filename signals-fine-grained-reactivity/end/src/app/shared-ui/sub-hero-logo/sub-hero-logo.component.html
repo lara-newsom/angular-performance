@@ -1,0 +1,19 @@
+<div class="hero-message">
+  <div class="logo">
+    <div>
+      <img
+        [ngSrc]="logoUrl"
+        alt="Just Like People Pet Boutique Logo"
+        width="226"
+        height="121"
+      />
+    </div>
+  </div>
+  <p class="title"><ng-content select="[title]"/></p>
+  <p class="sub-title"><ng-content select="[sub-title]"/></p>
+  <p class="fun-text">{{ revolvingText() }}</p>
+</div>
+
+{{ templateRendered() }}
+
+

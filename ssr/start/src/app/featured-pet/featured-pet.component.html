@@ -1,0 +1,30 @@
+<section
+  aria-label="Featured Pet"
+>
+  <h2 class="featured-pet-banner">{{'Featured Pet' | uppercase}}</h2>
+  <div class="featured-pet">
+    <div class="image-container">
+      <img
+        ngSrc="../../assets/images/cropped/36.jpg"
+        alt="Fluffernutter gets a bath"
+        width="400"
+        height="400"
+      />
+    </div>
+    <div class="featured-pet-text">
+      <h3>Fluffernutter the Cat</h3>
+      <p>Fluffernutter loves her people but she also loves baths! She is this week's featured pet because she is so cooperative at bath time!</p>
+      <p class="sub-text">Favorite Snacks</p>
+      <p>Fluffernutter can be found happily munching on cucumbers or freeze dried chicken. She will do terrible things to get her paws on tuna and sardine flavored Happy Kitty brand cat snacks.</p>
+      <p class="sub-text">Favorite Product</p>
+      <p>Fluffernutter's favorite Just Like People Product is the
+        <a
+          [routerLink]="['../', ROUTE_TOKENS.products, 'hats']"
+          [queryParams]="{
+            productId: 'cat-bonnet'
+          }"
+          queryParamsHandling="merge"
+        >Baby Blue Baby Bonnet for Big Baby Kitties</a></p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,79 @@
+<cdk-virtual-scroll-viewport [itemSize]="50" class="scroll-viewport">
+<div class="category-wrapper">
+  <table>
+    <caption>
+      <h3>All Available Products for Just like People</h3>
+    </caption>
+    <thead>
+      <tr>
+        <th>Select</th>
+        <th class="optional-col">Product Image</th>
+        <th (click)="sortColumn('title')">
+          Product Name
+          <span
+            [class.rotated-arrow-icon]="sortColumnProperty() === 'title'"
+            class="arrow-icon"
+          ></span>
+        </th>
+        <th
+          class="optional-col"
+          (click)="sortColumn('description')"
+        >
+          Description
+          <span
+            [class.rotated-arrow-icon]="sortColumnProperty() === 'description'"
+            class="arrow-icon"
+          ></span>
+        </th>
+        <th
+          class="optional-col"
+          (click)="sortColumn('category')">
+          Category
+          <span
+            [class.rotated-arrow-icon]="sortColumnProperty() === 'category'"
+            class="arrow-icon"
+          ></span>
+        </th>
+        <th (click)="sortColumn('price')">
+          Price
+          <span
+            [class.rotated-arrow-icon]="sortColumnProperty() === 'price'"
+            class="arrow-icon"
+          ></span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *cdkVirtualFor="let product of products()"
+      >
+        <td class="button-col">
+          <app-add-to-cart-button
+          [productId]="product.id"
+          numberOnly/>
+        </td>
+        <td class="optional-col">
+          <img
+            [ngSrc]="product.thumb"
+            alt=""
+            height="50"
+            width="50"
+          />
+        </td>
+        <td class="title">{{product.title}}</td>
+        <td class="optional-col description">{{product.description}}</td>
+        <td
+          class="optional-col"
+        >
+        {{product.category | uppercase}}</td>
+        @if(product.salePrice){
+          <td class="sale-price">Sale! {{ product.salePrice | currency }}</td>
+        } @else {
+          <td>{{ product.price | currency }}</td>
+        }
+      </tr>
+    </tbody>
+  </table>
+</div>
+</cdk-virtual-scroll-viewport>
+

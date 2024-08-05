@@ -1,0 +1,28 @@
+<section
+  aria-label="Products"
+  class="main-content"
+>
+  <h2 class="visually-hidden">Products for {{ productService.selectedCategory() }} Category</h2>
+  <div class="table-toggle">
+    <mat-slide-toggle
+      [checked]="tableView()"
+      (toggleChange)="switchView()"
+      color="primary"
+    >Enable Table View</mat-slide-toggle>
+  </div>
+  @if(tableView()) {
+    <app-table-view/>
+  }@else{
+    <div class="category-wrapper">
+      <div class="side-nav-wrapper">
+        <app-side-menu
+          (setTableView)="handleRowSelect($event)"
+        ></app-side-menu>
+      </div>
+      <div class="horizontal-divider"></div>
+      <div id="productDetail" class="detail-wrapper" tabindex="-1">
+        <router-outlet/>
+      </div>
+    </div>
+  }
+</section>

@@ -1,0 +1,28 @@
+<nav
+  aria-label="Product Details"
+  class="side-nav"
+>
+  <ul>
+    @for (product of products(); track product.id) {
+      <li>
+        <a
+          [routerLink]="['./']"
+          routerLinkActive="router-link-active"
+          ariaCurrentWhenActive="page"
+          [queryParams]="{
+            productId: product.id
+          }"
+          queryParamsHandling="merge"
+          class="image-button"
+        >
+          <img
+            [alt]="product.title"
+            [ngSrc]="product.thumb"
+            height="106"
+            width="106"
+          />
+        </a>
+      </li>
+    }
+  </ul>
+</nav>

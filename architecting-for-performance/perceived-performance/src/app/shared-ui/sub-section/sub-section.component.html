@@ -1,0 +1,17 @@
+<section
+  aria-label="Featured Products"
+>
+  <h2 class="visually-hidden">Featured Products</h2>
+  <div class="sub-section">
+    @for(product of featured(); track product.id) {
+      <app-card
+        [product]="product"
+      />
+    } @empty {
+      <div class="loading">
+        <p>Hold tight! We're loading our featured products</p>
+        <mat-spinner/>
+      </div>
+    }
+  </div>
+</section>

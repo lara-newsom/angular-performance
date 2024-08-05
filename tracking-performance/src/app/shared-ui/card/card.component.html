@@ -1,0 +1,19 @@
+<div
+  class="product"
+>
+  <div class="card-image">
+    <img [src]="product.image" alt=""/>
+  </div>
+  <div class="featured-product-title">
+    <a
+      [routerLink]="['../', ROUTE_TOKENS.products, product.category]"
+      [queryParams]="{
+        productId: product.id
+      }"
+    ><h3>{{ product.title }}</h3></a>
+    <p>{{ product.price | currency }}</p>
+    <app-add-to-cart-button
+      [productId]="product.id"
+    ></app-add-to-cart-button>
+  </div>
+</div>

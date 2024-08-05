@@ -1,0 +1,82 @@
+table{
+  background-color: var(--white);
+  border-spacing: 0px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  caption {
+    h3 {
+      font-size: 2rem;
+    }
+  }
+  thead {
+    tr {
+      background-color: var(--background-medium-blue);
+      th {
+        padding: 20px;
+        border: none;
+      }
+    }
+  }
+  tbody {
+    tr {
+      &:nth-last-of-type(odd) {
+        background-color: var(--background-extra-light-blue);
+      }
+      &:hover {
+        background-color: var(--background-light-blue);
+        font-weight: 900;
+      }
+      td {
+        padding: 10px;
+      }
+    }
+  }
+  img {
+    text-align: center;
+  }
+}
+
+.description {
+  width: 500px;
+}
+
+.title {
+  width: 300px;
+}
+
+.sale-price {
+  color: darkgreen;
+  font-weight: 600;
+}
+
+
+.button-col {
+  max-width: 150px;
+  min-width: 150px;
+}
+
+.arrow-icon {
+  display: inline-block;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-left: 12px;
+  transform: translateY(-2px);
+  transition: transform .2s ease-out;
+}
+
+.rotated-arrow-icon {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+@media(max-width: 715px) {
+  .optional-col {
+    display: none;
+  }
+}
+.scroll-viewport {
+  height: 650px;
+  width: 100%;
+}

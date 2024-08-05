@@ -1,0 +1,28 @@
+.page-wrapper {
+  margin-top: 20px;
+  background-color: var(--background-light-blue);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-wrapper{
+  margin-right: 5%;
+}
+
+.right-wrapper {
+  flex-grow: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media(max-width: 910px) {
+  .left-wrapper {
+    display: none;
+  }
+  .right-wrapper{
+    width: 90%;
+  }
+}

@@ -1,0 +1,52 @@
+<section
+  aria-label="Store Logo and Motto"
+>
+  <h2 class="visually-hidden">Store Logo and Motto</h2>
+  <app-hero-section [imageUrl]="homeImageUrl"/>
+  <app-sub-hero-logo>
+    <ng-container title>Because animals are people too.</ng-container>
+    <ng-container sub-title>And you can't be a people without accessories.</ng-container>
+    <ng-container banner>Join us this Wednesday at Petsville Pet Center Co-op for a special day of fun for all of our animal best friends.
+      Located at the corner of Speck Avenue and Pointer Lane, we will be open from 12pm to 5pm. Come early for door prizes!
+      Registration is available by calling the store at 555-222-1122 (ask for Ruth!) or in person on the day of the vent.
+      Pets in costumes get a free species appropriate gift just for being so cute! Pet parents in matching costumes get a buy one get one free coupon valid for the next four weeks.
+      Don't miss the event of the year!
+    </ng-container>
+  </app-sub-hero-logo>
+  @defer(on viewport; prefetch on idle){
+    <app-featured-pet/>
+  } @placeholder{
+    <section
+      aria-label="Featured Pet"
+      class="feat-pet-placeholder"
+    >
+      <h2 class="featured-pet-banner">{{'Featured Pet' | uppercase}}</h2>
+      <p>Placeholder</p>
+    </section>
+  } @loading(minimum 500ms) {
+    <section
+      aria-label="Featured Pet"
+      class="feat-pet-placeholder"
+    >
+      <h2 class="featured-pet-banner">{{'Featured Pet' | uppercase}}</h2>
+      <mat-spinner class="loading"/>
+      <p>Loading...</p>
+    </section>
+  } @error {
+    <section
+    aria-label="Featured Pet"
+    class="feat-pet-placeholder"
+  >
+    <h2 class="featured-pet-banner">{{'Featured Pet' | uppercase}}</h2>
+    <p>There has been an oopsie loading this feature please refresh the view.</p>
+  </section>
+  }
+
+  @defer(on viewport){
+    <app-sub-section/>
+  } @placeholder{
+    <section aria-label="Featured Products"></section>
+  }
+</section>
+
+

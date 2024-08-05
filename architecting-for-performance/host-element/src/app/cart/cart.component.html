@@ -1,0 +1,88 @@
+<app-two-panel-layout
+  ariaLabel="Cart Checkout"
+  ariaLiveSetting="assertive"
+>
+  <img
+    left-wrapper
+    ngSrc="../../assets/images/checkout.jpg"
+    alt=""
+    width="463"
+    height="695"
+    priority
+  />
+  <div right-wrapper>
+    <h3 class="cart-header">Just Like People Shopping Cart</h3>
+    @if(submitted && !loading) {
+      <div class="totals-item">
+        <div class="totals-details-wrapper">
+          <div>Thank you for our order!</div>
+        </div>
+        <div class="totals-details-wrapper">
+          <div>Order# 1664</div>
+        </div>
+        <div class="totals-details-wrapper">
+          <button appJlpBorderButton input="submit" (click)="returnToProducts()">Keep Shopping</button>
+        </div>
+      </div>
+    } @else {
+      <div class="cart-items-wrapper">
+        @for (item of cartService.cartItemsPlusQuantity(); track item.id){
+          <div class="cart-item">
+            <div class="cart-item-image-wrapper">
+              <img [ngSrc]="item.thumb" [alt]="item.title" width="100" height="100"/>
+            </div>
+            <h4
+              [attr.aria-label]="item.title + ' quantity in cart: ' + item.quantity "
+              class="cart-item-name"
+            >{{ item.title }}</h4>
+            <app-add-to-cart-button
+              [productId]="item.id"
+              numberOnly
+            />
+            @if(item.salePrice){
+              <p class="cart-item-sale-price">Sale! {{ (item.salePrice * (item.quantity || 1)) | currency }}</p>
+            } @else {
+              <p class="cart-item-price">{{ (item.price * (item.quantity || 1)) | currency }}</p>
+            }
+          </div>
+        } @empty {
+          <p class="cart-item-name">Your pets must accessorize! Go add some accessories to your cart</p>
+        }
+      </div>
+      <div class="totals-item">
+        <h4 class="visually-hidden">Cart Total: {{ cartService.total() | currency }}</h4>
+        <div class="totals-details-wrapper">
+          <div>Subtotal</div>
+          <div>{{ cartService.subtotal() | currency }}</div>
+        </div>
+        <div class="totals-details-wrapper">
+          <div>Shipping</div>
+          <div>{{ cartService.shipping()  | currency }}</div>
+        </div>
+        <div class="totals-details-wrapper">
+          <div>Sales Tax</div>
+          <div>{{ cartService.salesTax() | currency }}</div>
+        </div>
+        <div class="totals-details-wrapper">
+          <div>Total</div>
+          <div>{{ cartService.total() | currency }}</div>
+        </div>
+        <div class="totals-details-wrapper" aria-live="assertive">
+          @if(loading) {
+            <div class="loading">
+              <p>Processing...</p>
+              <mat-spinner aria-label="Order Checkout"/>
+            </div>
+          } @else {
+            <button
+              appJlpBorderButton
+              input="submit"
+              (click)="checkout()"
+              [disabled]="cartService.subtotal() === 0"
+            >Checkout</button>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</app-two-panel-layout>

@@ -1,0 +1,73 @@
+<div class="category-wrapper">
+  <table>
+    <caption>
+      <h3>All Available Products for Just like People</h3>
+    </caption>
+    <thead>
+      <tr>
+        <th>Select</th>
+        <th class="optional-col">Product Image</th>
+        <th (click)="sortColumn('title')">
+          Product Name
+          <span
+            [class.rotated-arrow-icon]="sortColumnProperty() === 'title'"
+            class="arrow-icon"
+          ></span>
+        </th>
+        <th
+          class="optional-col"
+          (click)="sortColumn('description')"
+        >
+          Description
+          <span
+            [class.rotated-arrow-icon]="sortColumnProperty() === 'description'"
+            class="arrow-icon"
+          ></span>
+        </th>
+        <th
+          class="optional-col"
+          (click)="sortColumn('category')">
+          Category
+          <span
+            [class.rotated-arrow-icon]="sortColumnProperty() === 'category'"
+            class="arrow-icon"
+          ></span>
+        </th>
+        <th (click)="sortColumn('price')">
+          Price
+          <span
+            [class.rotated-arrow-icon]="sortColumnProperty() === 'price'"
+            class="arrow-icon"
+          ></span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let product of products()"
+      >
+        <td class="button-col">
+          <app-add-to-cart-button
+          [productId]="product.id"
+          numberOnly/>
+        </td>
+        <td class="optional-col">
+          <img
+            [ngSrc]="product.thumb"
+            alt=""
+            height="50"
+            width="50"
+          />
+        </td>
+        <td [innerHTML]="product.title"></td>
+        <td class="optional-col">{{product.description}}</td>
+        <td
+          class="optional-col"
+        >
+        {{product.category | uppercase}}</td>
+        <td>{{product.price | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

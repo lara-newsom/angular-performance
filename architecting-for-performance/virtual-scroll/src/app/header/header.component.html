@@ -1,0 +1,90 @@
+<header class="site-header">
+  <a
+    class="home-logo"
+    [routerLink]="['/' + ROUTE_TOKENS.home]"
+  ><img
+    alt="Home - Just like people pet boutique"
+    [ngSrc]="logoUrl"
+    width="300"
+    height="111"
+    priority
+  /></a>
+  <nav
+    aria-label="Main"
+  >
+    <ul>
+      <li>
+        <a
+          [routerLink]="[ '/' + ROUTE_TOKENS.home]"
+          routerLinkActive="selected-item"
+          ariaCurrentWhenActive="page"
+          class="menu-option"
+        >Home</a>
+      </li>
+      <li
+        routerLinkActive="selected-item"
+      >
+        <button
+          role="link"
+          (click)="toggleMenu()"
+          (keydown.escape)="selectCategory('none')"
+          class="menu-option"
+          [attr.aria-expanded]="showMenu"
+        >Products
+          <span
+            [class.rotated-arrow-icon]="showMenu"
+            class="arrow-icon"
+          ></span></button>
+        <ul
+          [class.show-submenu]="showMenu"
+          class="collapsible-content"
+        >
+          @if(showMenu) {
+            @for(link of LINKS; track link.category){
+              <li
+                class="content-inner"
+                routerLinkActive="selected-sub-item"
+                ariaCurrentWhenActive="page"
+              >
+                <a
+                  class="link"
+                  [routerLink]="['/' + ROUTE_TOKENS.products, link.category]"
+                  [queryParams]="{ productId: link.firstProduct }"
+                  (click)="selectCategory(link.category)"
+                  (keydown.escape)="selectCategory('none')"
+                >
+                  {{ link.description }}
+                </a>
+              </li>
+            }
+          } @else {
+            <li [routerLink]="['/' + ROUTE_TOKENS.products]" tabindex="-1"></li>
+          }
+        </ul>
+      </li>
+      <li>
+        <a
+          [routerLink]="[ '/' + ROUTE_TOKENS.contact]"
+          routerLinkActive="selected-item"
+          ariaCurrentWhenActive="page"
+          class="menu-option"
+        >Contact</a>
+      </li>
+      <li>
+        <a
+          [routerLink]="[ '/' + ROUTE_TOKENS.cart]"
+          routerLinkActive="selected-item"
+          ariaCurrentWhenActive="page"
+          queryParamsHandling="merge"
+          class="menu-option"
+        ><span class="total-items">{{ cartService.totalItems() }}</span>
+        <img
+          ngSrc="../../assets/images/cart-icon.png"
+          alt="Shopping Cart"
+          width="24"
+          height="20"
+        /></a>
+      </li>
+    </ul>
+  </nav>
+</header>

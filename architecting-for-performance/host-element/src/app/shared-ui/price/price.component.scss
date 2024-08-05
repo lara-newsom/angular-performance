@@ -1,0 +1,13 @@
+.price {
+  font-size: var(--highlighted-text);
+  font-weight: var(--bold-text);
+}
+.old-price {
+  text-decoration: line-through;
+  color: red;
+}
+.sale-message {
+  font-style: italic;
+  color: darkgreen;
+  min-height: 1.5rem;
+}

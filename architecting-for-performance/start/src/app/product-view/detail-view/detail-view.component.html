@@ -1,0 +1,42 @@
+@if (selectedProduct()){
+  <div
+    class="detail"
+  >
+    <h3>{{ selectedProduct().title }}</h3>
+    <div class="image-wrapper">
+      <div class="product-image">
+        <img
+          [ngSrc]="selectedProduct().image"
+          [alt]="selectedProduct().title"
+          height="500"
+          width="500"
+        />
+      </div>
+      <div class="description">
+        <h4
+          [attr.aria-label]="'Product Tags: ' + selectedProduct().tags"
+        >
+          <p
+            aria-hidden="true"
+          >Tags:
+            @for (tag of selectedProduct().tags; track $index) {
+              <span
+                class="tag"
+              >{{tag}}</span>
+            }
+          </p>
+        </h4>
+        <p>{{ selectedProduct().description }}</p>
+        <p app-price
+          [price]="selectedProduct().price"
+          [salePrice]="selectedProduct().salePrice"
+        ></p>
+        <app-add-to-cart-button
+          [productId]="selectedProduct().id"
+        />
+      </div>
+    </div>
+  </div>
+} @else {
+  <h3>Please Select a Product</h3>
+}

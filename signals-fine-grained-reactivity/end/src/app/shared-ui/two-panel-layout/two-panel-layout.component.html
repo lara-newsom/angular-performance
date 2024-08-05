@@ -1,0 +1,14 @@
+<section
+  [attr.aria-label]="ariaLabel"
+  class="main-content"
+>
+  <h2 class="visually-hidden">{{ ariaLabel }}</h2>
+  <div
+    class="page-wrapper"
+    [attr.aria-live]="ariaLiveSetting"
+  >
+    <div class="left-wrapper"><ng-content select="[left-wrapper]"/></div>
+    <div class="right-wrapper"><ng-content select="[right-wrapper]"/></div>
+  </div>
+</section>
+{{ templateRendered() }}

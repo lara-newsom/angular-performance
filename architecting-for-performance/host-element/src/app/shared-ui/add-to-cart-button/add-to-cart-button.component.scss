@@ -1,0 +1,31 @@
+:host.add-to-cart {
+  width: 100%;
+  display: flex;
+  button {
+    &:first-of-type {
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+    }
+    &:nth-of-type(2) {
+      flex-grow: 1;
+      z-index: 5;
+      span {
+        font-size: var(--body-text)
+      }
+    }
+    &:last-of-type {
+      border-radius: 0 var(--border-radius) var(--border-radius)0;
+    }
+  }
+}
+
+@media(max-width: 715px) {
+  :host.add-to-cart {
+    button {
+      &:nth-of-type(2) {
+        span {
+          font-size: var(--small-text)
+        }
+      }
+    }
+  }
+}

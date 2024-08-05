@@ -1,0 +1,6 @@
+@if(salePrice){
+  Price: <span class="old-price">{{price | currency}}</span> <span>{{salePrice | currency}}</span>
+} @else {
+  Price: <span>{{ price | currency }}</span>
+}
+<p class="sale-message">{{ onSaleMessage() }}</p>
